@@ -54,14 +54,3 @@ class LinkedList {
         }
     }
 };
-
-let cities = new LinkedList();
-
-cities.insert('Conway', 'head');
-cities.insert('Russel', 'Conway');
-cities.insert('Carlisle', 'Conway');
-cities.insert('Alma', 'Russel');
-
-cities.display();
-cities.remove('Carlisle');
-cities.display();
