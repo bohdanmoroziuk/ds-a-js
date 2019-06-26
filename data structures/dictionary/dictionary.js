@@ -1,34 +1,85 @@
-
+/**
+ * An associative array, map, symbol table, or dictionary 
+ * is an abstract data type composed of a collection of (key, value) pairs, 
+ * such that each possible key appears at most once in the collection. 
+ * 
+ * Note that a dictionary is also known as a map.
+ * 
+ * @description Dictionary implementation in JavaScript with Object
+ */
 class Dictionary {
-    constructor() {
-        this.datastore = [];
-    }
+  /**
+   * @description Create a dictionary
+   */
+  constructor() {
+    this.collection = {};
+  }
 
-    get length() {
-        return Object.keys(this.datastore).length;
-    }
+  /**
+   * @description Returns the length of the dictionary
+   * @returns {number} Number of pairs in the dictionary
+   */
+  get length() {
+    return Object.keys(this.collection).length;
+  }
 
-    add(key, value) {
-        this.datastore[key] = value;
-    }
+  /**
+   * @description Gets the element with the input key
+   * @param {*} key 
+   * @returns {*} Value associated with the specified key
+   */
+  get(key) {
+    return this.collection[key];
+  }
 
-    remove(key) {
-        delete this.datastore[key];
-    }
+  /**
+   * @description Puts the key-value pair in the dictionary
+   * @param {*} key 
+   * @param {*} value 
+   */
+  put(key, value) {
+    this.collection[key] = value;
+  }
 
-    find(key) {
-        return this.datastore[key];
-    }
+  /**
+   * @description Removes the given key from the dictionary
+   * @param {*} key 
+   */
+  remove(key) {
+    delete this.collection[key];
+  }
 
-    show() {
-        for (let key of Object.keys(this.datastore)) {
-            console.log(`${key} -> ${this.datastore[key]}`);
-        }
-    }
+  /**
+   * @description Checks if the key is present in the dictionary
+   * @param {*} key 
+   * @returns True if the passed key is in the dictionary, otherwise - False
+   */
+  hasKey(key) {
+    return Object.prototype.hasOwnProperty.call(this.collection, key);
+  }
 
-    clear() {
-        for (let key of Object.keys(this.datastore)) {
-            delete this.datastore[key];
-        }
+  /**
+   * @description Removes all key-value pairs from the dictionary
+   */
+  clear() {
+    for (const key in this.collection) {
+      this.hasKey(key) && (delete this.collection[key]);
     }
+  }
+
+  /**
+   * @description Returns all keys as an array
+   * @returns {*[]} An array of dictionary keys
+   */
+  keys() {
+    return Object.keys(this.collection);
+  }
+
+  /**
+   * @description Returns all values as an array
+   * @returns {*[]} An array of dictionary values
+   */
+  values() {
+    return Object.values(this.collection);
+  }
 };
