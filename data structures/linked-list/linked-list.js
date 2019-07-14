@@ -168,6 +168,7 @@ class LinkedList {
 
   /**
    * @description Returns the current size of the list.
+   * 
    * @return {Number} number of nodes in the list.
    */
   size() {
