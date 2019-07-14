@@ -2,11 +2,12 @@
  * Stacks is a data structure where the last entered data is the first to come out.
  * Also know as Last-in, First-out (LIFO).
  *
- * @description Stack implementation in JavaScript with Array
+ * @description Stack implementation in JavaScript with Array.
  */
 class Stack {
   /**
-   * @description Create a stack
+   * @description Create a stack.
+   * 
    * @param {*} items
    */
   constructor(...items) {
@@ -14,48 +15,53 @@ class Stack {
   }
 
   /**
-   * @description Returns the length of the stack
-   * @returns {number} Number of items in the stack
+   * @description Returns the length of the stack.
+   * 
+   * @returns {Number} number of items in the stack.
    */
   length() {
     return this.items.length;
   }
 
   /**
-   * @description Adds a single or multiple items to the top of the stack
+   * @description Adds a single or multiple items to the top of the stack.
+   * 
    * @param {*} items
-   * @returns {number} Number of items in the stack
+   * @returns {Number} number of items in the stack.
    */
   push(...items) {
     return this.items.push(...items);
   }
 
   /**
-   * @description Retrieve & remove the next item of the stack
-   * @returns {*} The top item of the stack
+   * @description Retrieves & removes the next item of the stack.
+   * 
+   * @returns {*} the top item of the stack.
    */
   pop() {
     return this.items.pop();
   }
 
   /**
-   * @description Get the value of the item on top of the stack
-   * @returns {*} The top item of the Stack
+   * @description Gets the value of the item on top of the stack.
+   
+   * @returns {*} the top item of the stack.
    */
   peek() {
     return this.items[this.length() - 1];
   }
 
   /**
-   * @description Check if stack is empty
-   * @returns {boolean} True if stack is empty, False otherwise
+   * @description Checks if stack is empty.
+   * 
+   * @returns {Boolean} true if stack is empty, false otherwise.
    */
   isEmpty() {
     return this.length() === 0;
   }
 
   /**
-   * @description Removes all the items of the stack
+   * @description Removes all the items of the stack.
    */
   clear() {
     this.items = [];

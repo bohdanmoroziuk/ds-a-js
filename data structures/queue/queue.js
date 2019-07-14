@@ -16,32 +16,36 @@ class Queue {
   }
 
   /**
-   * Returns current size of queue.
-   * @return {number} Number of items in the queue.
+   * @description Returns current size of queue.
+   * 
+   * @return {Number} number of items in the queue.
    */
   length() {
     return this.items.length;
   }
 
   /**
-   * Adds a single or multiple items to the queue.
-   * @return {number} Number of items in the queue.
+   * @description Adds a single or multiple items to the queue.
+   * 
+   * @return {Number} number of items in the queue.
    */
   enqueue(...items) {
     return this.items.push(...items);
   }
 
   /**
-   * Retrieves & removes the next item of the queue.
-   * @return {*} The data stored in item.
+   * @description Retrieves & removes the next item of the queue.
+   *
+   * @return {*} the data stored in item.
    */
   dequeue() {
     return this.items.shift();
   }
 
   /**
-   * Returns item at front of queue without dequeueing.
-   * @return {*} The data stored in item.
+   * @description Returns item at front of queue without dequeueing.
+   * 
+   * @return {*} the data stored in item.
    */
   front() {
     return this.items[0];
@@ -49,7 +53,8 @@ class Queue {
 
   /**
    * @description Checks if queue is empty.
-   * @returns {boolean} False if the queue is empty or True if not.
+   * 
+   * @returns {boolean} false if the queue is empty or true if not.
    */
   isEmpty() {
     return this.length() === 0;
