@@ -1,3 +1,5 @@
+const collection = Symbol('Dictionary.Collection');
+
 /**
  * An associative array, map, symbol table, or dictionary 
  * is an abstract data type composed of a collection of (key, value) pairs, 
@@ -12,7 +14,16 @@ class Dictionary {
    * @description Create a dictionary.
    */
   constructor() {
-    this.collection = {};
+    this[collection] = {};
+  }
+
+  /**
+   * @description Checks if dictionary is empty.
+   * 
+   * @returns {Boolean} false if the dictionary is empty or true if not.
+   */
+  isEmpty() {
+    return this.length() === 0;
   }
 
   /**
@@ -20,8 +31,8 @@ class Dictionary {
    * 
    * @returns {Number} number of pairs in the dictionary.
    */
-  get length() {
-    return Object.keys(this.collection).length;
+  length() {
+    return this.keys().length;
   }
 
   /**
@@ -31,7 +42,7 @@ class Dictionary {
    * @returns {*} value associated with the specified key.
    */
   get(key) {
-    return this.collection[key];
+    return this[collection][key];
   }
 
   /**
@@ -41,7 +52,7 @@ class Dictionary {
    * @param {*} value 
    */
   put(key, value) {
-    this.collection[key] = value;
+    this[collection][key] = value;
   }
 
   /**
@@ -50,7 +61,7 @@ class Dictionary {
    * @param {*} key 
    */
   remove(key) {
-    delete this.collection[key];
+    delete this[collection][key];
   }
 
   /**
@@ -60,15 +71,15 @@ class Dictionary {
    * @returns {Boolean} true if the passed key is in the dictionary, otherwise - false
    */
   hasKey(key) {
-    return Object.prototype.hasOwnProperty.call(this.collection, key);
+    return Object.prototype.hasOwnProperty.call(this[collection], key);
   }
 
   /**
    * @description Removes all key-value pairs from the dictionary
    */
   clear() {
-    for (const key in this.collection) {
-      this.hasKey(key) && (delete this.collection[key]);
+    for (const key in this[collection]) {
+      this.hasKey(key) && (delete this[collection][key]);
     }
   }
 
@@ -78,7 +89,7 @@ class Dictionary {
    * @returns {*[]} an array of dictionary keys.
    */
   keys() {
-    return Object.keys(this.collection);
+    return Object.keys(this[collection]);
   }
 
   /**
@@ -87,6 +98,21 @@ class Dictionary {
    * @returns {*[]} an array of dictionary values.
    */
   values() {
-    return Object.values(this.collection);
+    return Object.values(this[collection]);
+  }
+
+  /**
+   * @description Returns all key-value pairs as an array.
+   * 
+   * @returns {*[]} an array of key-value pairs.
+   */
+  entries() {
+    return Object.entries(this[collection]);
+  }
+
+  *[Symbol.iterator]() {
+    for (const entry of this.entries()) {
+      yield entry;
+    }
   }
 };
