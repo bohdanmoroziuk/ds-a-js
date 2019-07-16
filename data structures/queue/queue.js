@@ -1,3 +1,5 @@
+const items = Symbol('Queue.Items');
+
 /**
  * A queue is a collection in which the entities in the collection are kept in order
  * and the principal (or only) operations on the collection are the addition of entities
@@ -12,7 +14,7 @@ class Queue {
    * @description Create a queue.
    */
   constructor() {
-    this.items = [];
+    this[items] = [];
   }
 
   /**
@@ -21,16 +23,17 @@ class Queue {
    * @return {Number} number of items in the queue.
    */
   length() {
-    return this.items.length;
+    return this[items].length;
   }
 
   /**
    * @description Adds a single or multiple items to the queue.
    * 
+   * @param {*} values
    * @return {Number} number of items in the queue.
    */
-  enqueue(...items) {
-    return this.items.push(...items);
+  enqueue(...values) {
+    return this[items].push(...values);
   }
 
   /**
@@ -39,7 +42,7 @@ class Queue {
    * @return {*} the data stored in item.
    */
   dequeue() {
-    return this.items.shift();
+    return this[items].shift();
   }
 
   /**
@@ -48,7 +51,7 @@ class Queue {
    * @return {*} the data stored in item.
    */
   front() {
-    return this.items[0];
+    return this[items][0];
   }
 
   /**
@@ -64,6 +67,6 @@ class Queue {
    * @description Removes all the items of the queue.
    */
   clear() {
-    this.items = [];
+    this[items] = [];
   }
 }
