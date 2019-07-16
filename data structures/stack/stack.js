@@ -1,3 +1,5 @@
+const values = Symbol('Stack.Values');
+
 /**
  * Stacks is a data structure where the last entered data is the first to come out.
  * Also know as Last-in, First-out (LIFO).
@@ -7,11 +9,9 @@
 class Stack {
   /**
    * @description Create a stack.
-   * 
-   * @param {*} items
    */
-  constructor(...items) {
-    this.items = [...items];
+  constructor() {
+    this[values] = [];
   }
 
   /**
@@ -20,7 +20,7 @@ class Stack {
    * @returns {Number} number of items in the stack.
    */
   length() {
-    return this.items.length;
+    return this[values].length;
   }
 
   /**
@@ -30,7 +30,7 @@ class Stack {
    * @returns {Number} number of items in the stack.
    */
   push(...items) {
-    return this.items.push(...items);
+    return this[values].push(...items);
   }
 
   /**
@@ -39,7 +39,7 @@ class Stack {
    * @returns {*} the top item of the stack.
    */
   pop() {
-    return this.items.pop();
+    return this[values].pop();
   }
 
   /**
@@ -48,7 +48,7 @@ class Stack {
    * @returns {*} the top item of the stack.
    */
   peek() {
-    return this.items[this.length() - 1];
+    return this[values][this.length() - 1];
   }
 
   /**
@@ -64,6 +64,6 @@ class Stack {
    * @description Removes all the items of the stack.
    */
   clear() {
-    this.items = [];
+    this[values] = [];
   }
 }
